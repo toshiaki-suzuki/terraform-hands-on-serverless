@@ -1,1 +1,1 @@
-# terraform-hands-on-serverless
+terraform-hands-on-serverless
