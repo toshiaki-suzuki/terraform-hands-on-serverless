@@ -10,6 +10,10 @@ variable "tr_lambda_role-arn" {
   type = string
 }
 
+variable "tr_api-execution-arn" {               
+  type = string                                 
+}                                               
+
 data "archive_file" "tr_lambda" {
   type        = "zip"
   source_dir  = "${path.module}/src"
@@ -30,6 +34,14 @@ resource "aws_lambda_function" "tr_lambda" {
     }
   }
 }
+
+resource "aws_lambda_permission" "tr_lambda_permit" {               
+  statement_id  = "AllowAPIGatewayGetTrApi"                         
+  action        = "lambda:InvokeFunction"                            
+  function_name = aws_lambda_function.tr_lambda.arn                 
+  principal     = "apigateway.amazonaws.com"                        
+  source_arn    = "${var.tr_api-execution-arn}/test/GET/"           
+}                                                                   
 
 output "tr_lambda-invoke-arn" {
   value = aws_lambda_function.tr_lambda.invoke_arn
