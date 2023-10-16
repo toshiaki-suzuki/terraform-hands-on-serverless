@@ -1,19 +1,3 @@
-variable "prefix" {
-  type = string
-}
-
-variable "employee_list_table-name" {
-  type = string
-}
-
-variable "tr_lambda_role-arn" {
-  type = string
-}
-
-variable "tr_api-execution-arn" {               
-  type = string                                 
-}                                               
-
 data "archive_file" "tr_lambda" {
   type        = "zip"
   source_dir  = "${path.module}/src"
