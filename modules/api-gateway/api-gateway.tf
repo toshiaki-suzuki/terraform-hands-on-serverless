@@ -1,11 +1,3 @@
-variable "prefix" {
-  type = string
-}
-
-variable "tr_lambda-invoke-arn" {
-  type = string
-}
-
 resource "aws_api_gateway_rest_api" "tr_api" {
   name = "${var.prefix}_tr_api"
 }

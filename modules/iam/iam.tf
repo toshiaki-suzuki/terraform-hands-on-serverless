@@ -1,11 +1,3 @@
-variable "prefix" {
-  type = string
-}
-
-variable "employee_list_table-arn" {
-  type = string
-}
-
 # IAMロールを作成
 resource "aws_iam_role" "tr_lambda_role" {
   name = "${var.prefix}_tr_lambda_role"

@@ -1,8 +1,3 @@
-# 変数を宣言
-variable "prefix" {
-  type = string
-}
-
 # DynamoDBテーブルを作成
 resource "aws_dynamodb_table" "employee_list" { # リソース名を指定
   name         = "${var.prefix}_employee_list" # 変数を参照
